@@ -1,4 +1,5 @@
 # Technologies Used
+* Java8 , Spring Boot , Micro Servces, REST API, H2 Database
 
 # Functional requirements
 1. The user should be able to see the list of cities
