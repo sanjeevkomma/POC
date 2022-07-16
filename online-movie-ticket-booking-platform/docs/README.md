@@ -1,3 +1,5 @@
+# Technologies Used
+
 # Functional requirements
 1. The user should be able to see the list of cities
 2. choose a city
@@ -13,3 +15,10 @@
 # Non-functional requirements
 1. The system should always be available
 2. The system should be responsive. The user experience should be smooth.
+
+# Usecase Diagram
+
+# Class Diagram
+
+# Sequence Diagram
+
