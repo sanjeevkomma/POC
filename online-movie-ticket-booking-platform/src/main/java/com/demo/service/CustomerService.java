@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.demo.model.Movie;
 import com.demo.model.Theatre;
+import com.demo.model.Ticket;
 
 //import com.demo.model.Show;
 //import com.demo.model.Theatre;
@@ -14,9 +15,17 @@ public interface CustomerService {
 	
 	List<Theatre> getTheatres(String movieName, String cityName, String date);
 	
-	void bookTicket(String theatreName, String timing, List<String> seats, String date);
+	Ticket bookTicket(Ticket ticket);
 	
 	void cancelTicket();
+
+	List<Movie> browseMovies(String cityName, String langName, String genre);
+
+	List<Ticket> bulkBookingTickets(List<Ticket> tickets);
+
+	void cancelTicket(Integer bookingId);
+
+	void cancelingTickets(List<Integer> bookingIds);
 	
 	/*List<City> getCities();
 	List<Theatre> getTheaters(city);

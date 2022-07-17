@@ -8,7 +8,7 @@ public class Show {
     private Date showTime;
     private Movie movie;
     private Theatre theater;
-    private int availableSeats;
+	private int availableSeats;
 
     public Show(Date showTime, Movie movie, Theatre theater) {
         idCounter += 1;
@@ -34,6 +34,23 @@ public class Show {
     }
     public void updateShow(){
     }
+    
+    public Date getShowTime() {
+		return showTime;
+	}
+
+	public void setShowTime(Date showTime) {
+		this.showTime = showTime;
+	}
+
+	public Theatre getTheater() {
+		return theater;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
+	}
+	
     public synchronized Ticket bookTicket(Customer customer, int seats){
         if(availableSeats >= seats && seats >0){
             Ticket ticket = new Ticket();
@@ -60,5 +77,7 @@ public class Show {
                 ", availableSeats=" + availableSeats +
                 '}';
     }
+    
+    
 }
 
