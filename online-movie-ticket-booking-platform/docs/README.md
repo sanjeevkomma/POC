@@ -23,8 +23,6 @@
 
 # Class Diagram
 
-# Sequence Diagram
-
 # Activity Diagram
 
 # 2) High Level Design
