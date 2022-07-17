@@ -16,11 +16,10 @@
 # Non-functional requirements
 1. The system should always be available ( The system should be available at all times )
 2. The system should be realiable ( To maintain reliability of the system, we should take backup of the database which is continuously maintained and updated to reflect the most recent changes)
-3. 
+
 
 # I) Low Level Design
 # Usecase Diagram
-* ![image](https://user-images.githubusercontent.com/7721150/179366396-425daeaf-3850-4072-b1ab-447c21f1f0a1.png)
 
 # Class Diagram
 
