@@ -34,16 +34,15 @@ public class Show {
     }
     public void updateShow(){
     }
-    public synchronized Ticket bookTicket(RegisteredUser user, int seats){
+    public synchronized Ticket bookTicket(Customer customer, int seats){
         if(availableSeats >= seats && seats >0){
             Ticket ticket = new Ticket();
             availableSeats -= seats;
-            ticket.setOwner(user.getName());
+            ticket.setOwner(customer.getName());
             ticket.setBookedShow(this);
             ticket.setBookingTime(new Date());
             ticket.setNumberOfSeats(seats);
             System.out.println("Successfully booked");
-            user.bookingHistory.add(ticket);
             return ticket;
         }
         else{
