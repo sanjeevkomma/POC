@@ -17,13 +17,3 @@
 1. The system should always be available ( The system should be available at all times )
 2. The system should be realiable ( To maintain reliability of the system, we should take backup of the database which is continuously maintained and updated to reflect the most recent changes)
 
-
-# I) Low Level Design
-# Usecase Diagram
-
-# Class Diagram
-
-# Activity Diagram
-
-# 2) High Level Design
-
