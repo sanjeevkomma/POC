@@ -1,0 +1,10 @@
+services:
+  user-management-service:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    container_name: user-management-service
+    ports:
+      - "7200:7200"   # App port
+      - "5005:5005"   # Debug port
+    restart: unless-stopped

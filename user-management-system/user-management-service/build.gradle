@@ -37,6 +37,10 @@ dependencies {
 	implementation(group: 'org.apache.logging.log4j', name: 'log4j-api', version: "${log4jVersion}")
 	implementation(group: 'org.apache.logging.log4j', name: 'log4j-core', version: "${log4jVersion}")
 
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// MySQL Connector (Latest)
+	runtimeOnly 'com.mysql:mysql-connector-j'
 
 }
 
