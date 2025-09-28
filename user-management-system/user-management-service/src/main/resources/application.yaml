@@ -4,7 +4,7 @@ api:
 
 # Server Configuration
 server:
-  port: 8080
+  port: 2323
 
 # Logging Configuration
 logging:
