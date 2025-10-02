@@ -7,4 +7,14 @@ services:
     ports:
       - "7200:7200"   # App port
       - "5005:5005"   # Debug port
-    restart: unless-stopped
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/organization_schema
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: mysql
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
+    networks:
+      - springnet
+
+networks:
+  springnet:
+    driver: bridge

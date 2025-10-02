@@ -7,7 +7,7 @@
 ## Application Design : 
 
 ## Commands : 
-
+* $ .\deploy\run.bat
 
 
 ## How to Start : 
