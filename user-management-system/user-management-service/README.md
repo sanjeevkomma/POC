@@ -6,19 +6,22 @@
 
 ## Application Design : 
 
-## Commands : 
-* $ .\deploy\run.bat
+## Commands :
 
 
 ## How to Start : 
-
+* $ .\deploy\run.bat
    
 ## REST API : 
 
-    1. Get All User : GET : http://localhost:8080/user
+    1. Get All User : GET : http://localhost:8080/user/all
     2. Get User : GET : http://localhost:8080/user/{id}
     3. Delete User : DELETE : http://localhost:8080/user/{id}
     4. Save User : POST : http://localhost:8080/user
+
+## Swagger :
+* OpenAPI JSON: http://localhost:7200/v3/api-docs
+* Swagger UI: http://localhost:7200/swagger-ui.html or http://localhost:7200/swagger-ui/index.html
     
 ## cURL ( Client URL ) :
 

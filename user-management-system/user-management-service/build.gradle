@@ -19,28 +19,41 @@ repositories {
 }
 
 dependencies {
+	// Spring Boot Starters
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'com.fasterxml.jackson.core:jackson-databind'
-	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	// OpenFeign for microservices calls
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 
+	// Jackson JSON
+	implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+	// Lombok
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
+	// Log4j
+	implementation "org.apache.logging.log4j:log4j-api:${log4jVersion}"
+	implementation "org.apache.logging.log4j:log4j-core:${log4jVersion}"
+
+	// MySQL Connector
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	// Swagger OpenAPI
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+	// If using WebFlux, replace with:
+	// implementation 'org.springdoc:springdoc-openapi-starter-webflux-ui:2.2.0'
+
+	// DevTools
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// Testing
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
-	implementation(group: 'org.apache.logging.log4j', name: 'log4j-api', version: "${log4jVersion}")
-	implementation(group: 'org.apache.logging.log4j', name: 'log4j-core', version: "${log4jVersion}")
-
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-
-	// MySQL Connector (Latest)
-	runtimeOnly 'com.mysql:mysql-connector-j'
 
 }
 
