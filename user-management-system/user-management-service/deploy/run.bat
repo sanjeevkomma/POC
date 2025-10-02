@@ -1,7 +1,6 @@
 @echo off
-REM Build Spring Boot JAR
+REM Step 1: Build project, skip tests
 call gradlew.bat clean build -x test
 
-REM Build and run Docker
-REM docker-compose -f "%~dp0docker-compose.yml" up --build -d  #To run in detached mode
+REM Step 2: Run docker compose
 docker-compose -f "%~dp0docker-compose.yml" up --build
