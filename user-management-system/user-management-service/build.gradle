@@ -2,6 +2,9 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version "${springBootVersion}"
 	id 'io.spring.dependency-management' version '1.1.7'
+
+	// OpenAPI Generator plugin
+	id 'org.openapi.generator' version '7.0.1'
 }
 
 group = 'user-management-service'
@@ -57,13 +60,46 @@ dependencies {
 
 }
 
+// contract first approach -- Open API
+openApiGenerate {
+	generatorName = 'spring'
+
+	// Disable validation temporarily to isolate path issues
+	validateSpec = false
+
+	// Use relative path instead of absolute path / URI
+	inputSpec = "src/main/resources/api/employee-api.yaml"
+
+	// Output directory
+	outputDir = "$buildDir/generated"
+
+	apiPackage = 'com.demo.controller'
+	modelPackage = 'com.demo.model'
+	invokerPackage = 'com.demo'
+
+
+
+	configOptions = [
+			interfaceOnly: 'true',
+			useSpringBoot3: 'true',
+			dateLibrary: 'java8'
+	]
+}
+sourceSets {
+	main {
+		java {
+			srcDirs += "$buildDir/generated/src/main/java"
+		}
+	}
+}
+tasks.named('compileJava') {
+	dependsOn tasks.named('openApiGenerate')
+}
+tasks.named('test') {
+	useJUnitPlatform()
+}
 dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:2024.0.2"
 	}
-}
-
-
-tasks.named('test') {
-	useJUnitPlatform()
 }
