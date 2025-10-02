@@ -1,0 +1,82 @@
+pipeline {
+    agent any
+
+    environment {
+        // Set Java and Gradle paths if needed
+        JAVA_HOME = tool name: 'JDK21', type: 'jdk'
+        PATH = "${JAVA_HOME}/bin:${env.PATH}"
+    }
+
+    options {
+        // Keep build logs for 30 days
+        buildDiscarder(logRotator(numToKeepStr: '30'))
+        // Timestamps in console output
+        timestamps()
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                echo 'Checking out code from SCM...'
+                checkout scm
+            }
+        }
+
+        stage('Clean & Generate OpenAPI Code') {
+            steps {
+                echo 'Cleaning previous build and generating OpenAPI code...'
+                bat './gradlew clean openApiGenerate'  // Windows
+                // sh './gradlew clean openApiGenerate' // Linux/Mac
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building the project...'
+                bat './gradlew build -x test'  // skip tests if you want
+                // sh './gradlew build -x test'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                echo 'Running unit tests...'
+                bat './gradlew test'
+                // sh './gradlew test'
+            }
+            post {
+                always {
+                    junit '**/build/test-results/test/*.xml'
+                }
+            }
+        }
+
+        stage('Archive Artifacts') {
+            steps {
+                echo 'Archiving JAR...'
+                archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
+            }
+        }
+
+        stage('Deploy (Optional)') {
+            steps {
+                echo 'Deploying application...'
+                // Example: copy jar to server or use Docker
+                // bat 'scp build/libs/*.jar user@server:/opt/app/'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build completed successfully!'
+        }
+        failure {
+            echo 'Build failed. Check logs.'
+        }
+        always {
+            cleanWs() // clean workspace if needed
+        }
+    }
+}

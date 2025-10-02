@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-management-service
+spec:
+  selector:
+    app: user-management-service
+  ports:
+    - protocol: TCP
+      port: 7200       # Service port
+      targetPort: 7200 # Container port
+    - protocol: TCP
+      port: 5005
+      targetPort: 5005
+  type: LoadBalancer
