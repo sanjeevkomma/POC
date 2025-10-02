@@ -68,7 +68,8 @@ openApiGenerate {
 	validateSpec = false
 
 	// Use relative path instead of absolute path / URI
-	inputSpec = "src/main/resources/api/employee-api.yaml"
+	inputSpec = "C:/Codebase/POC/user-management-system/user-management-service/src/main/resources/api/employee-api.yaml"
+
 
 	// Output directory
 	outputDir = "$buildDir/generated"
